@@ -4,6 +4,7 @@
     "MONGODB": {
         "USER": "root",
         "PASSWORD": "root",
-        "PORT": "27017"
+        "PORT": "27017",
+        "URL": "mongodb://localhost/test"
     }
 }
