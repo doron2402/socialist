@@ -18,7 +18,7 @@ if (process.argv['env']) {
 
 
 //Modules
-var Hapi = require("hapi");
+AA.Hapi = require("hapi");
 AA.Joi = require("joi");
 AA.Mongo = require('mongoose');
 AA.async = require('async');
@@ -28,14 +28,15 @@ AA.Settings = require('./settings')({env: environment});
 
 AA.MongoDB = AA.Mongo.connect(AA.Settings.MONGODB.URL);
 AA.Routes = require('./routes');
-AA.Schema = require('./schema');
+AA.Schema = require('./schemas');
 AA.Models = require('./models');
 
-AA.server = new Hapi.Server(AA.Settings.PORT, AA.Settings.HOST, AA.Settings.OPTIONS);
+AA.server = new AA.Hapi.Server(AA.Settings.PORT, AA.Settings.HOST);
 
 AA.server.route([
-    AA.Routes.external.post_new_lead
+    AA.Routes.external.follow.routes.follow
 ]);
+
 AA.server.start(function() {
     console.log("Hapi server started @", AA.server.info.uri);
 });
