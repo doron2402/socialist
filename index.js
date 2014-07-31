@@ -21,12 +21,14 @@ if (process.argv['env']) {
 AA.Hapi = require("hapi");
 AA.Joi = require("joi");
 AA.Mongo = require('mongoose');
+AA.Neo4j = require('node-neo4j');
 AA.async = require('async');
 AA._ = require('lodash');
 //Settings
 AA.Settings = require('./settings')({env: environment});
+AA.MongoDB  = AA.Mongo.connect(AA.Settings.MONGODB.URL);
+AA.Neo4j    = new AA.Neo4j(A.Settings.NEO4J.URL);
 
-AA.MongoDB = AA.Mongo.connect(AA.Settings.MONGODB.URL);
 AA.Routes = require('./routes');
 AA.Schema = require('./schemas');
 AA.Models = require('./models');
