@@ -25,7 +25,6 @@ var users = [
 var count = 0;
 users.forEach(function(user) {
     var tmp_user = new user_model(user);
-    console.log(user);
     tmp_user.save(function (err, res) {
         if (err) return console.error(err);
         count++;
