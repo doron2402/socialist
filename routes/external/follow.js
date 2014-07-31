@@ -1,4 +1,7 @@
 var follow = {};
+var _ = AA.lodash;
+var joi = AA.Joi;
+var valid = AA.Validation;
 follow.routes = {};
 
 follow.routes.follow = {
@@ -6,17 +9,13 @@ follow.routes.follow = {
     path: '/api/{client_id}/users/{user_id}/follow',
     config: {
         handler: function (request, reply) {
-            return reply({response: 'OK', result: request.params});
-        },
-        validate: {
-            params: {
-                client_id   : AA.Joi.string().min(12).max(16).required(),
-                user_id     : AA.Joi.string().min(5).max(32).required()
-            },
-            payload: {
-                target_id: AA.Joi.array().required(),
-
-            }
+            var args = _.merge(request.params, request.payload);
+            joi.validate(args, valid.Follow.user_target_user, function (err, value) {
+                if (err) {
+                    return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
+                }
+                return reply({response: 'OK', result: args});
+            });
         }
     }
 };
@@ -26,18 +25,14 @@ follow.routes.unfollow = {
     path: '/api/{client_id}/users/{user_id}/unfollow',
     config: {
         handler: function (request, reply) {
-            return reply({response: 'OK', result: request.params});
+            var args = _.merge(request.params, request.payload);
+            joi.validate(args, valid.Follow.user_target_user, function (err, value) {
+                if (err) {
+                    return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
+                }
+                return reply({response: 'OK', result: args});
+            });
         },
-        validate: {
-            params: {
-                client_id   : AA.Joi.string().min(12).max(16).required(),
-                user_id     : AA.Joi.string().min(5).max(32).required()
-            },
-            payload: {
-                target_id: AA.Joi.array().required(),
-
-            }
-        }
     }
 };
 
@@ -46,14 +41,13 @@ follow.routes.check_relationship = {
     path: '/api/{client_id}/users/{user_id}/relation/{target_id}',
     config: {
         handler: function (request, reply) {
-            return reply({response: 'OK', result: request.params});
-        },
-        validate: {
-            params: {
-                client_id   : AA.Joi.string().min(12).max(16).required(),
-                user_id     : AA.Joi.string().min(5).max(32).required(),
-                target_id: AA.Joi.string().min(5).max(32).required()
-            }
+            var args = _.merge(request.params, request.payload);
+            joi.validate(args, valid.Follow.user_target_user, function (err, value) {
+                if (err) {
+                    return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
+                }
+                return reply({response: 'OK', result: args});
+            });
         }
     }
 };
