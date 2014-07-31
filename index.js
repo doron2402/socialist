@@ -36,7 +36,9 @@ AA.Models = require('./models');
 AA.server = new AA.Hapi.Server(AA.Settings.PORT, AA.Settings.HOST);
 
 AA.server.route([
-    AA.Routes.external.follow.routes.follow
+    AA.Routes.external.follow.routes.follow,
+    AA.Routes.external.follow.routes.unfollow,
+    AA.Routes.external.follow.routes.check_relationship
 ]);
 
 AA.server.start(function() {
