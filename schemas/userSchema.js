@@ -1,5 +1,8 @@
-var userSchema = AA.Mongo.Schema({
+var Mongo = require('mongoose');
+var userSchema = Mongo.Schema({
     name        :       String,
+    username    :       String,
+    user_id     :       String,
     email       :       String,
     phone       :       String,
     updated_at  :       { type: Date, default: Date.now },
@@ -8,7 +11,6 @@ var userSchema = AA.Mongo.Schema({
     following   :       [],
     following_ct:       Number,
     followers_ct:       Number,
-    user_id     :       String,
     country     :       String,
     state       :       String,
     city        :       String,
