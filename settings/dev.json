@@ -8,6 +8,10 @@
         "URL": "mongodb://localhost/test"
     },
     "NEO4J": {
-        "URL": "http://root:root@localhost:port"
+        "URL": "http://localhost:7474",
+        "HOST": "localhost",
+        "PORT": "7474",
+        "USER": "root",
+        "PASSWORD": "root"
     }
 }

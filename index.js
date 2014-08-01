@@ -27,7 +27,7 @@ AA.lodash = require('lodash');
 //Settings
 AA.Settings = require('./settings')({env: environment});
 AA.MongoDB  = AA.Mongo.connect(AA.Settings.MONGODB.URL);
-AA.Neo4j    = new AA.Neo4j(AA.Settings.NEO4J.URL);
+AA.Neo4jGraph = new AA.Neo4j(AA.Settings.NEO4J.URL);
 AA.Validation = require('./adapters/validate');
 AA.Routes = require('./routes');
 AA.Schema = require('./schemas');
