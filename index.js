@@ -16,7 +16,6 @@ if (process.argv['env']) {
     }
 }
 
-
 //Modules
 AA.Hapi = require("hapi");
 AA.Joi = require("joi");

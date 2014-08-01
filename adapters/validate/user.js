@@ -11,14 +11,28 @@ User.create = {
     middle_name: Joi.string().regex(/[a-zA-Z]{2,32}/).optional()
 };
 
-User.get = {
-    user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
+User.user_get = {
+    user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required(),
+    client_id: Joi.string().regex(/[a-zA-Z0-9]{8,16}/).required()
 };
 
 User.get_by_username = {
     username: Joi.string().alphanum().min(3).max(30).required()
 };
 
+User.users_get = {
+    users_ids: Joi.array(),
+    client_id: Joi.string().regex(/[a-zA-Z0-9]{8,16}/).required()
+};
+
+User.create_user = {
+    client_id: Joi.string().regex(/[a-zA-Z0-9]{8,16}/).required()
+};
+
+User.user_update = {
+    user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required(),
+    client_id: Joi.string().regex(/[a-zA-Z0-9]{8,16}/).required()
+};
 
 User.delete_by_id = {
     user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
