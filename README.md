@@ -51,5 +51,8 @@
     -   GET /api/{client_id}/users/{user_id}/watch/{target_id} - BOOL
     -   POST /api/{client_id}/users/{user_id}/watch/{target_id} - user (id) watch item (id)
 
+### How's it work
+-   Saving data in MongoDB and storing relationship data in NEO4J
+
 
 ** Doron Segal.
