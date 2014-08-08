@@ -10,11 +10,11 @@ follow.routes.follow = {
     config: {
         handler: function (request, reply) {
             var args = _.merge(request.params, request.payload);
-            joi.validate(args, valid.Follow.user_target_user, function (err, value) {
+            joi.validate(args, valid.Follow.user_target_user, function (err, validate_args) {
                 if (err) {
                     return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
                 }
-                return reply({response: 'OK', result: args});
+                return AA.Controllers.follow.user_follow_target(validate_args, request, reply);
             });
         }
     }
@@ -26,11 +26,11 @@ follow.routes.unfollow = {
     config: {
         handler: function (request, reply) {
             var args = _.merge(request.params, request.payload);
-            joi.validate(args, valid.Follow.user_target_user, function (err, value) {
+            joi.validate(args, valid.Follow.user_target_user, function (err, validate_args) {
                 if (err) {
                     return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
                 }
-                return reply({response: 'OK', result: args});
+                return reply({response: 'OK', result: validate_args});
             });
         },
     }
@@ -42,11 +42,11 @@ follow.routes.check_relationship = {
     config: {
         handler: function (request, reply) {
             var args = _.merge(request.params, request.payload);
-            joi.validate(args, valid.Follow.user_target_user, function (err, value) {
+            joi.validate(args, valid.Follow.user_target_user, function (err, validate_args) {
                 if (err) {
                     return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
                 }
-                return reply({response: 'OK', result: args});
+                return reply({response: 'OK', result: validate_args});
             });
         }
     }
