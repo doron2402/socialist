@@ -29,7 +29,7 @@ AA.Settings = require('./settings')({env: environment});
 
 //Data Sets
 AA.MongoDB  = AA.Mongo.connect(AA.Settings.MONGODB.URL);
-AA.NEO4J = new AA.neo4j.GraphDatabase(AA.Settings.NEO4J.URL);
+AA.NEO4JGraph = new AA.neo4j.GraphDatabase(AA.Settings.NEO4J.URL);
 // AA.NEO4J.getNode
 AA.Validation = require('./adapters/validate');
 AA.Routes = require('./routes');
