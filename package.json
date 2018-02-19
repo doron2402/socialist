@@ -28,9 +28,9 @@
   "homepage": "https://github.com/doron2402/socialist",
   "dependencies": {
     "async": "~0.9.0",
-    "lodash": "~2.4.1",
-    "joi": "~4.6.1",
-    "hapi": "~6.2.1",
+    "lodash": "~4.17.5",
+    "joi": "~8.1.0",
+    "hapi": "~13.4.0",
     "mongoose": "~3.8.14",
     "nodemon": "~1.2.1"
   }
